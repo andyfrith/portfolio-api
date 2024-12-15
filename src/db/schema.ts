@@ -6,7 +6,7 @@ import {
   uniqueIndex,
   varchar,
 } from "drizzle-orm/pg-core";
-import { createSelectSchema } from "drizzle-zod";
+import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 
 export const portfolioSchema = pgSchema("portfolio");
 
@@ -42,5 +42,16 @@ export const accolade = portfolioSchema.table(
   },
 );
 
-export const selectAccoladesSchema = createSelectSchema(accolade);
+export const insertAccoladeSchema = createInsertSchema(accolade, {
+  summary: schema => schema.min(10).max(150),
+}).required({ summary: true,
+}).omit({
+  // superstarId: true,
+  createdAt: true,
+  updatedAt: true,
+  deletedAt: true,
+});
+
+export const patchAccoladeSchema = insertAccoladeSchema.partial();
+export const selectAccoladeSchema = createSelectSchema(accolade);
 export const selectSuperstarSchema = createSelectSchema(superstar);

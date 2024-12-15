@@ -9,11 +9,13 @@ import notFound from "./middlewares/not-found";
 import onError from "./middlewares/on-error";
 
 const app = createApp();
-const routes = [index, accolades, hello, superstar];
+const routes = [index, accolades, hello, superstar] as const;
 configureOpenAPI(app);
 routes.forEach((route) => {
   app.route("/", route);
 });
+
+export type AppType = typeof routes[number];
 
 app.get("/", (c) => {
   return c.text("Hello Hono!");

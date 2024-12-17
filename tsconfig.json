@@ -10,12 +10,8 @@
       "@/*": ["./src/*"]
     },
     "typeRoots": ["./node_modules/@types"],
-    "types": [
-      "node"
-    ],
-    "allowImportingTsExtensions": true,
+    "types": ["node"],
     "strict": true,
-    "noEmit": true,
     "outDir": "./dist",
     "skipLibCheck": true
   },

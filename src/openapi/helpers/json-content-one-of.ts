@@ -1,6 +1,6 @@
 import type { ZodSchema } from "./types.ts";
 
-import oneOf from "./one-of.ts";
+import oneOf from "./one-of";
 
 function jsonContentOneOf<
   T extends ZodSchema,

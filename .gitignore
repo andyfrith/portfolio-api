@@ -13,6 +13,8 @@ node_modules/
 
 # env
 .env
+.env.local
+.env.test
 .env.production
 
 # logs
@@ -28,3 +30,7 @@ lerna-debug.log*
 .DS_Store
 
 docker-data/
+dev.db
+test.db
+.vercel
+dist
